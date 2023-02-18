@@ -15,3 +15,7 @@
 5. Use pin `0000` to open secret chats.
 
 NOTE. It did not tested on iPhone devices.
+
+## Links
+
+- Flipper - https://flipperzero.one/
