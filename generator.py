@@ -10,9 +10,13 @@ else:
     filename = 'pins_reset_full.txt'
 
 MAJOR_NUMS = {
+# Add 'number' here if you know it shold be in PIN code.
+#   number: weight
     '5': 5,
     '7': 3,
     '3': 1,
+#   '4': 1
+#   ...
 }
 
 class Pin:
@@ -45,27 +49,16 @@ class Pin:
     def __eq__(self, other: 'Pin') -> bool:
         return self.weight == other.weight
 
-
-# def generate():
-#     rows = []
-#     rows.append(f'DEFAULT_DELAY {DELAY}')
-#     for mul in range(10):
-#         # filename = mul * 1_000
-#         for i in range(1_000):
-#             index = mul * 1_000 + i
-#             rows.append(f'STRING {index:04}')
-#             rows.append('CTRL a')
-#     with open(f'pins_{filename:04}.txt', 'wt') as fio:
-#         fio.write('\n'.join(rows))
-
 def generate() -> list[Pin]:
     pins = []
     for i in range(COUNT):
         pins.append(Pin(i))
     return pins
 
+
 def sort_pins(pins: list[Pin])-> None:
     pins.sort(reverse=True)
+
 
 def save(pins: list[Pin]) -> None:
     rows = []
@@ -73,7 +66,6 @@ def save(pins: list[Pin]) -> None:
     for p in pins:
         ps = str(p)
 
-        # rows.append(f'STRING {ps:04}-> {p.weight}')
         rows.append(f'STRING {ps}')
         rows.append('CTRL a')
         rows.append(f'STRING 0000')
